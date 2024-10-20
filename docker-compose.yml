@@ -3,14 +3,16 @@ version: '3.8'
 services:
   spring-app:
     build:
-       context: .
-       dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/postgres?currentSchema=petshelter1
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres-petshelter
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: AleksandarStojanov211067
+    depends_on:
+      - db
 
   db:
     image: postgres:latest
@@ -20,8 +22,8 @@ services:
       POSTGRES_DB: postgres-petshelter
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: AleksandarStojanov211067
-     volumes:
+    volumes:
       - db_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  db_data:
