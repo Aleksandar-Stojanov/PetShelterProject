@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Pet</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h2>Add New Pet</h2>
+
+<form action="/pet/add" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+    </select><br>
+
+    <label for="species">Species:</label>
+    <input type="text" id="species" name="species" required><br>
+
+    <label for="breed">Breed:</label>
+    <input type="text" id="breed" name="breed"><br>
+
+    <label for="date_of_birth">Date of birth:</label>
+    <input type="date" id="date_of_birth" name="date_of_birth" required><br>
+
+    <label for="breed">Medical records:</label>
+    <input type="text" id="medical_records" name="medical_records"><br>
+
+    <label for="date_of_examination">Date of examination:</label>
+    <input type="date" id="date_of_examination" name="date_of_examination" required><br>
+
+    <label for="vaccinations">Vaccinations:</label>
+    <input type="text" id="vaccinations" name="vaccinations" required><br>
+
+    <label for="id_shelter">Shelter Id:</label>
+    <input type="text" id="id_shelter" name="id_shelter" required><br>
+
+    <!--    <label for="staff">Staff responsible for the pet:</label>-->
+<!--    <input type="text" id="staff" name="staff"><br>-->
+
+    <button type="submit">Add Pet</button>
+</form>
+
+<a th:href="@{/pet-home}">
+    Back to home page
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>

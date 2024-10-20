@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Review Application</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h2>Review Application</h2>
+
+<!-- Display application details -->
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Applicants</th>
+        <th>Reviewed by</th>
+        <th>Pet ID</th>
+        <th>Pet Name</th>
+        <th>Adoption Status</th>
+    </tr>
+    <tr>
+        <td th:text="${applicationDetails['id_application']}"></td>
+        <td th:text="${applicationDetails['applicants']}"></td>
+        <td th:text="${applicationDetails['reviewed_by']}"></td>
+        <td th:text="${applicationDetails['id_pet']}"></td>
+        <td th:text="${applicationDetails['name']}"></td>
+        <td th:text="${applicationDetails['adoption_status']}"></td>
+    </tr>
+</table>
+
+<!-- Buttons for Allow Adoption and Delete Application -->
+<form action="/applications/allow-adoption" method="post">
+    <input type="hidden" name="id_application" th:value="${applicationDetails['id_application']}" />
+
+<!--    <input type="hidden" name="staffPin" th:value="${staffPin}" />-->
+    <input type="hidden" name="adopterPin" th:value="${adopterPin}" />
+    <input type="hidden" name="petId" th:value="${petId}" />
+    <label for="staffPin">Insert your Id: (Staff only)</label>
+    <input type="text" id="staffPin" name="staffPin" />
+    <br/>
+    <button type="submit">Allow Adoption</button>
+</form>
+
+
+
+<a th:href="@{/pet-home}">
+    Back to home page
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+
+</body>
+</html>

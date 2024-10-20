@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Pet Less Info</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h2>Pet Less Info</h2>
+
+<form th:action="@{/pet-home}" method="get">
+  <label for="genderFilter">Filter by Gender:</label>
+  <select id="genderFilter" name="gender">
+    <option value="">All</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+  </select>
+  <br/>
+  <label for="speciesFilter">Filter by Species:</label>
+  <select id="speciesFilter" name="species">
+    <option value="">All</option>
+    <option value="Dog">Dog</option>
+    <option value="Cat">Cat</option>
+  </select>
+<br/>
+  <label for="adoptionFilter">Filter by adoption status:</label>
+  <select id="adoptionFilter" name="adoption_status">
+    <option value="">All</option>
+    <option value="Adopted">Adopted</option>
+    <option value="Not adopted">Not adopted</option>
+  </select>
+  <br/>
+  <button type="submit">Apply Filters</button>
+</form>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Date of Birth</th>
+    <th>Gender</th>
+    <th>Species</th>
+    <th>Breed</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="petLessInfo : ${petLessInfoList}">
+    <td>
+      <a th:href="@{/pet/{id}(id=${petLessInfo['id_pet']})}" th:text="${petLessInfo['id_pet']}"></a>
+    </td>
+    <td th:text="${petLessInfo['name']}"></td>
+    <td th:text="${petLessInfo['date_of_birth']}"></td>
+    <td th:text="${petLessInfo['gender']}"></td>
+    <td th:text="${petLessInfo['species']}"></td>
+    <td th:text="${petLessInfo['breed']}"></td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/donations/all}">
+  <button>Show All Donators</button>
+</a>
+<br/>
+<a th:href="@{/applications/all}">
+  <button>Show All Applications</button>
+</a>
+<br/>
+<a th:href="@{/pet/add}">
+  <button>Add Pet</button>
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>

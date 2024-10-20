@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Applications and Applicants</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h2>Applications and Applicants</h2>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Applicants</th>
+    <th>Reviewed by</th>
+    <th>Pet ID</th>
+    <th>Pet Name</th>
+    <th>Adoption Status</th>
+    <th>Review</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="appAndApplicant : ${applicationsAndApplicantsList}">
+    <td th:text="${appAndApplicant['id_application']}"></td>
+    <td th:text="${appAndApplicant['applicants']}"></td>
+    <td th:text="${appAndApplicant['reviewed_by']}"></td>
+    <td th:text="${appAndApplicant['id_pet']}"></td>
+    <td th:text="${appAndApplicant['name']}"></td>
+    <td th:text="${appAndApplicant['adoption_status']}"></td>
+    <td>
+      <a th:href="@{/applications/review/{id}(id=${appAndApplicant['id_application']})}">
+        <button>Review Application</button>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table><br/>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Applicants</th>
+    <th>Reviewed by</th>
+    <th>Pet ID</th>
+    <th>Pet Name</th>
+    <th>Adoption Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="appAndApplicant : ${applicationsAndApplicantsListAdopted}">
+    <td th:text="${appAndApplicant['id_application']}"></td>
+    <td th:text="${appAndApplicant['applicants']}"></td>
+    <td th:text="${appAndApplicant['reviewed_by']}"></td>
+    <td th:text="${appAndApplicant['id_pet']}"></td>
+    <td th:text="${appAndApplicant['name']}"></td>
+    <td th:text="${appAndApplicant['adoption_status']}"></td>
+  </tr>
+  </tbody>
+</table><br/>
+<a th:href="@{/pet-home}">
+  Back to home page
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>

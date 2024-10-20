@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pet Details</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h2>Pet Details</h2>
+<p th:text="'ID: ' + ${petMoreInfo.id_pet}"></p>
+<p th:text="'Name: ' + ${petMoreInfo.pet_name}"></p>
+<p th:text="'Gender: ' + ${petMoreInfo.gender}"></p>
+<p th:text="'Species: ' + ${petMoreInfo.species}"></p>
+<p th:text="'Adoption Status: ' + ${petMoreInfo.adoption_status}"></p>
+<p th:text="'Breed: ' + ${petMoreInfo.breed}"></p>
+<p th:text="'Date of birth: ' + ${petMoreInfo.date_of_birth}"></p>
+<p th:text="'Medical Condition: ' + ${petMoreInfo.medical_condition}"></p>
+<p th:text="'Vaccinations: ' + ${petMoreInfo.vaccinations}"></p>
+<p th:text="'Shelter Name: ' + ${petMoreInfo.shelter_name}"></p>
+<p th:text="'Shelter Location: ' + ${petMoreInfo.location_shelter}"></p>
+
+<a th:href="@{/pet/{petID}/adopt(petID=${petMoreInfo.id_pet})}">
+    <button>Adopt this pet</button>
+</a>
+<p th:if="${message}" th:text="${message}"></p>
+<br/>
+<a th:href="@{/pet-home}">
+   Back to home page
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>New Donation</title>
+  <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+
+<h2>New Donation</h2>
+
+<form action="/donations/add" method="post">
+  <h3>Donation information:</h3>
+  <label for="personalIdentificationNumber">Donator ID:</label>
+  <input type="text" id="personalIdentificationNumber" name="personalIdentificationNumber" required><br>
+  <label for="name">Donator Name:</label>
+  <input type="text" id="name" name="name" required><br>
+  <label for="surname">Donator Surname:</label>
+  <input type="text" id="surname" name="surname" required><br>
+<br>
+  <h3>Shelter information:</h3>
+  <label for="shelterId">Shelter ID:</label>
+  <input type="text" id="shelterId" name="shelterId" required><br>
+  <h3>Inserted by:</h3>
+  <h4>(Must be a person who works in the same shelter)</h4>
+  <label for="personalIdentificationNumberStaff">Staff id:</label>
+  <input type="text" id="personalIdentificationNumberStaff" name="personalIdentificationNumberStaff" required><br>
+
+  <button type="submit">Submit</button>
+</form>
+<p th:if="${message}" th:text="${message}"></p>
+<br/>
+
+<a th:href="@{/pet-home}">
+  Back to home page
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>
