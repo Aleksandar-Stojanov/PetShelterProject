@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopter Confirmation</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h2>You can't apply if you are not already saved in the database.</h2>
+<h2>Do you want to be saved?</h2>
+
+<form action="/save-person" method="post">
+    <input type="hidden" name="personId" th:value="${personId}" />
+    <input type="hidden" name="name" th:value="${name}" />
+    <input type="hidden" name="surname" th:value="${surname}" />
+    <input type="hidden" name="shelterId" th:value="${shelterId}" />
+    <button type="submit" name="choice" value="yes">Yes</button>
+    <button type="submit" name="choice" value="no">No</button>
+</form>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Donations and Donators</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h2>Donations and Donators</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Donation ID</th>
+        <th>Donator</th>
+        <th>Shelter Name</th>
+        <th>Shelter Location</th>
+        <th>Shelter Phone Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="donationAndDonator : ${donationsAndDonatorsList}">
+        <td th:text="${donationAndDonator['id_donations']}"></td>
+        <td th:text="${donationAndDonator['Donator']}"></td>
+        <td th:text="${donationAndDonator['Shelter_name']}"></td>
+        <td th:text="${donationAndDonator['location_shelter']}"></td>
+        <td th:text="${donationAndDonator['shelter_phone_number']}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/donations/new}">
+    <button>Add a new donation</button>
+</a><br/>
+
+<a th:href="@{/pet-home}">
+    Back to home page
+</a>
+<img id="bottom-right-image" src="/56-561023_dog-and-cat-adoption-dog-and-cat-silhouette.png" alt="Paws Image">
+
+</body>
+</html>
