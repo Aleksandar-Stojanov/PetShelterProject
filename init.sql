@@ -27,7 +27,7 @@ insert into pet(name,gender,species,adoption_status,breed,date_of_birth)
 values
 ('','F','Dog','Adopted','Corgi','2023-9-22'),
 ('Krimi','F','Cat','Not adopted','Persian cat','2023-9-22'),
-('Gile','M','Dog','Adopted','','6 months'),
+('Gile','M','Dog','Adopted','','2023-9-22'),
 ('Luna','F','Cat','Adopted','British Shorthair.','2023-9-22');
 
 --Shelter (id_shelter, name, location, capacity)
