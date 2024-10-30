@@ -146,6 +146,10 @@ values
 ('Dental Problems','2023-06-05','Rabies',3),
 ('Dental Problems','2021-06-10','Rabies, Distemper and Parvovirus',4);
 
+ALTER TABLE medical_records
+ALTER COLUMN date_of_examination TYPE timestamp(6);
+
+
 --Phone_number_person(personal_identification_number *(person), phone_number)
 create table phone_number_person(
 personal_identification_number varchar(20) not null,
