@@ -1,7 +1,7 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.model.Medical_records;
+// import com.example.demo.model.Medical_records;
 
-public interface Medical_records_Service {
-    void save(Medical_records medicalRecords);
-}
+// public interface Medical_records_Service {
+//     void save(Medical_records medicalRecords);
+// }
