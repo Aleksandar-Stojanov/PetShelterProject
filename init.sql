@@ -129,26 +129,6 @@ values
 alter table application
 alter column personal_identification_number_staff drop not null;
 
---Medical_records (id_records, medical_condition, date_of_examination, vaccinations,
---id_pet*(pet))
-create table medical_records(
-id_records serial primary key,
-medical_condition varchar(100),
-date_of_examination date not null,
-vaccinations varchar(100) not null,
-id_pet integer not null,
-constraint fk_id_pet foreign key (id_pet) references pet(id_pet)
-);
-insert into medical_records (medical_condition, date_of_examination, vaccinations ,id_pet)
-values
-('','2023-11-26','Rabies and Parvovirus',1),
-('Ear Infections','2023-01-23','Rabies and Parvovirus',2),
-('Dental Problems','2023-06-05','Rabies',3),
-('Dental Problems','2021-06-10','Rabies, Distemper and Parvovirus',4);
-
-ALTER TABLE medical_records
-ALTER COLUMN date_of_examination TYPE timestamp(6);
-
 
 --Phone_number_person(personal_identification_number *(person), phone_number)
 create table phone_number_person(
@@ -274,31 +254,27 @@ left join pet_lives_at_shelter plas on pet.id_pet=plas.id_pet;
 --Information about all the pets
 create view pet_more_info as
 select pet.id_pet ,pet.name as pet_name,gender,species,adoption_status, 
-breed, date_of_birth,mr.medical_condition ,mr.vaccinations , s.name as shelter_name,s.location_shelter
+breed, date_of_birth, s.name as shelter_name,s.location_shelter
 from pet
 left join pet_lives_at_shelter plas on pet.id_pet=plas.id_pet
-left join shelter s on plas.id_shelter = s.id_shelter
-left join medical_records mr on pet.id_pet=mr.id_pet;
+left join shelter s on plas.id_shelter = s.id_shelter;
 
 --Information about all the pets that are not adopted
 create view not_adopted_pets as
-select pet.id_pet ,pet.name as pet_name,gender,species,adoption_status, breed, date_of_birth,mr.medical_condition ,
-mr.vaccinations , s.name as shelter_name,s.location_shelter
+select pet.id_pet ,pet.name as pet_name,gender,species,adoption_status, breed, date_of_birth, s.name as shelter_name,s.location_shelter
 from pet
 left join pet_lives_at_shelter plas on pet.id_pet=plas.id_pet
 left join shelter s on plas.id_shelter = s.id_shelter
-left join medical_records mr on pet.id_pet=mr.id_pet
 where pet.adoption_status like 'Not adopted';
 
 --Information about all the pets that are adopted
 create view adopted_pets_less_info as
 select pet.id_pet ,pet.name as pet_name,gender,species,adoption_status, breed, 
-date_of_birth,mr.medical_condition ,mr.vaccinations , s.name as shelter_name,s.location_shelter,
+date_of_birth, s.name as shelter_name,s.location_shelter,
 		(p.name ||' '||p.surname) as Adopter
 from pet
 left join pet_lives_at_shelter plas on pet.id_pet=plas.id_pet
 left join shelter s on plas.id_shelter = s.id_shelter
-left join medical_records mr on pet.id_pet=mr.id_pet
 left join adopter_adopts_pet aap on pet.id_pet =aap.id_pet 
 left join adopter a on aap.personal_identification_number =a.personal_identification_number 
 left join person p on aap.personal_identification_number  = p.personal_identification_number 
