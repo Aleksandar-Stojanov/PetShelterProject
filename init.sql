@@ -12,7 +12,7 @@ breed varchar(20),
 age varchar(20) not null
 constraint gender_constraint check(gender = 'M' or gender='F'),
 constraint adoption_status_constraint check(adoption_status = 'Adopted' or adoption_status='Not adopted')
-)
+);
 alter table pet
 alter column adoption_status set default 'Not adopted';
 
