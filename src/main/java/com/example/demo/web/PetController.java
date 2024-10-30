@@ -30,13 +30,14 @@ public class PetController {
     private final Pet_lives_at_shelter_Service petLivesAtShelterService;
     private final Medical_records_Service medicalRecordsService;
     private final ShelterService shelterService;
-    public PetController(PetService petService, JdbcTemplate jdbcTemplate, AdopterService adopterService, ApplicationService applicationService, Pet_lives_at_shelter_Service petLivesAtShelterService, Medical_records_Service medicalRecordsService, ShelterService shelterService){
+    // public PetController(PetService petService, JdbcTemplate jdbcTemplate, AdopterService adopterService, ApplicationService applicationService, Pet_lives_at_shelter_Service petLivesAtShelterService, Medical_records_Service medicalRecordsService, ShelterService shelterService){
+    public PetController(PetService petService, JdbcTemplate jdbcTemplate, AdopterService adopterService, ApplicationService applicationService, Pet_lives_at_shelter_Service petLivesAtShelterService, ShelterService shelterService){
         this.petService = petService;
         this.jdbcTemplate = jdbcTemplate;
         this.adopterService = adopterService;
         this.applicationService = applicationService;
         this.petLivesAtShelterService = petLivesAtShelterService;
-        this.medicalRecordsService = medicalRecordsService;
+        // this.medicalRecordsService = medicalRecordsService;
         this.shelterService = shelterService;
     }
 
