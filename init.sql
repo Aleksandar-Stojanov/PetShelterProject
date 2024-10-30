@@ -1,7 +1,7 @@
 create schema PetShelter1;
 
 
---Pet (id_pet, name, gender, species, adoption_status, breed, age)
+--Pet (id_pet, name, gender, species, adoption_status, breed, date_of_birth)
 create table pet(
 id_pet serial primary key,
 name varchar(20),
@@ -9,27 +9,26 @@ gender char(1) not null,
 species varchar(20) not null,
 adoption_status varchar(20) not null,
 breed varchar(20),
-age varchar(20) not null
+date_of_birth date
 constraint gender_constraint check(gender = 'M' or gender='F'),
 constraint adoption_status_constraint check(adoption_status = 'Adopted' or adoption_status='Not adopted')
 );
 alter table pet
 alter column adoption_status set default 'Not adopted';
 
-insert into pet(name,gender,species,adoption_status,breed,age)
+insert into pet(name,gender,species,adoption_status,breed,date_of_birth)
 values
-('Lesi','F','Dog','Not adopted','Corgi','3 months'),
-('Bela','F','Cat','Not adopted','Persian cat','1 year'),
-('Dzeki','M','Dog','Adopted','Golden retriever','10 months'),
-('Lili','F','Cat','Not adopted','','2 years');
+('Lesi','F','Dog','Not adopted','Corgi','2023-9-22'),
+('Bela','F','Cat','Not adopted','Persian cat','2023-9-22'),
+('Dzeki','M','Dog','Adopted','Golden retriever','2023-9-22'),
+('Lili','F','Cat','Not adopted','','2023-9-22');
 
-insert into pet(name,gender,species,adoption_status,breed,age)
+insert into pet(name,gender,species,adoption_status,breed,date_of_birth)
 values
-('','F','Dog','Adopted','Corgi','3 months'),
-('Krimi','F','Cat','Not adopted','Persian cat','5 year'),
+('','F','Dog','Adopted','Corgi','2023-9-22'),
+('Krimi','F','Cat','Not adopted','Persian cat','2023-9-22'),
 ('Gile','M','Dog','Adopted','','6 months'),
-('Luna','F','Cat','Adopted','British Shorthair.','2 years');
-
+('Luna','F','Cat','Adopted','British Shorthair.','2023-9-22');
 
 --Shelter (id_shelter, name, location, capacity)
 create table shelter(
