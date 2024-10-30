@@ -13,7 +13,7 @@ import java.util.Date;
 public class Medical_records {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_records;
 
     @Column(length = 100)
