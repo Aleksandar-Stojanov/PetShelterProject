@@ -28,7 +28,7 @@ public class PetController {
     private final AdopterService adopterService;
     private final ApplicationService applicationService;
     private final Pet_lives_at_shelter_Service petLivesAtShelterService;
-    private final Medical_records_Service medicalRecordsService;
+    // private final Medical_records_Service medicalRecordsService;
     private final ShelterService shelterService;
     // public PetController(PetService petService, JdbcTemplate jdbcTemplate, AdopterService adopterService, ApplicationService applicationService, Pet_lives_at_shelter_Service petLivesAtShelterService, Medical_records_Service medicalRecordsService, ShelterService shelterService){
     public PetController(PetService petService, JdbcTemplate jdbcTemplate, AdopterService adopterService, ApplicationService applicationService, Pet_lives_at_shelter_Service petLivesAtShelterService, ShelterService shelterService){
@@ -150,8 +150,8 @@ public class PetController {
         Date currentDate = Date.valueOf(currentDateTime.toLocalDate());
         Pet_lives_at_shelter petLivesAtShelter=new Pet_lives_at_shelter(petlivesid,currentDate);
         petLivesAtShelterService.save(petLivesAtShelter);
-        Medical_records mr = new Medical_records(medical_records,date_of_examination,vaccinations,pet);
-        medicalRecordsService.save(mr);
+        // Medical_records mr = new Medical_records(medical_records,date_of_examination,vaccinations,pet);
+        // medicalRecordsService.save(mr);
         return "redirect:/pet-home";
     }
 
